@@ -4,9 +4,10 @@
   "description": "For Them is an app created for my father. An app where you can consolidate all the things and memories that remind you of that particular person into an album. ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1", 
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "knex": "knex"
   },
   "author": "Amalia Claire Fergin",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "express": "^4.16.2",
     "knex": "^0.14.3",
     "morgan": "^1.9.0",
-    "nodemon": "^1.14.12"
+    "nodemon": "^1.14.12",
+    "pg": "^7.4.1"
   }
 }
