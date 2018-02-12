@@ -4,4 +4,9 @@ function allUsers () {
   return knex('users')
 }
 
-module.exports = {allUsers}
+function getOneUser (id) {
+  return knex('users')
+  .where('id', id)
+  .first()
+}
+module.exports = {allUsers, getOneUser}

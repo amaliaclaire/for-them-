@@ -7,4 +7,13 @@ function allUsersController (req, res, next) {
   }).catch(err => next(err))
 }
 
-module.exports = {allUsersController}
+function getOneController (req, res, next) {
+  let id = req.params.id
+  forThemModel.getOneUser(id)
+  .then(users => {
+    res.json(users)
+    console.log('here is user', user);
+  }).catch(err => next(err))
+}
+
+module.exports = {allUsersController, getOneController}
