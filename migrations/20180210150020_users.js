@@ -6,7 +6,6 @@ exports.up = function(knex, Promise) {
     table.text('avatar').notNullable();
     table.string('album_id').notNullable();
     table.timestamps(true, true)
-
   })
 };
 
