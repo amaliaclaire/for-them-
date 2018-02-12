@@ -3,14 +3,12 @@ const app = express()
 const port = process.env.PORT || 3000
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
+const forThemRouter = require('./routes/for-them.js')
 
 app.disable('x-powered-by')
 app.use(morgan('dev'))
 app.use(bodyParser.json())
-
-app.get('/ping', (req, res, next) => {
-  res.json({message: 'Pong!'})
-})
+app.use('/forThem', forThemRouter)
 
 app.use((err, req, res, next) => {
   const status = err.status || 500
