@@ -26,15 +26,30 @@ function createAlbum (req, res, next) {
   }).catch(err => next (err))
 }
 
-function createUserController (req, res, next) {
-  let {name, avatar, album_id} = req.body
-  forThemModel.createUser(name, avatar, album_id)
-  .then(user => {
-    res.json(user)
-  }).catch(err => next(err))
+
+function updateAlbum (req, res, next) {
+  // console.log(req.body);
+  let id = req.params.id
+  let album = {
+    title: req.body.title,
+    image: req.body['image'],
+    dedicated_to: req.body.dedicated_to,
+    user_id: req.body.user_id
+  }
+  albumsModel.updateSingleAlbum(id, album)
+  .then(album => {
+    res.json(album)
+  }).catch(err => next (err))
+}
+
+function deleteAlbum (req, res, next) {
+  let id = req.params.id
+  albumsModel.deleteSingleAlbum(id)
+  .then(album => {
+    res.json(album)
+  }).catch(err => next (err))
 }
 
 
 
-
-module.exports = {getAllAlbums, getOneAlbum, createAlbum}
+module.exports = {getAllAlbums, getOneAlbum, createAlbum, updateAlbum, deleteAlbum}

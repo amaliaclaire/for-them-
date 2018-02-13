@@ -12,13 +12,11 @@ function getOneController (req, res, next) {
   forThemModel.getOneUser(id)
   .then(users => {
     res.json(users)
-    console.log('here is user', user);
   }).catch(err => next(err))
 }
 
 function createUserController (req, res, next) {
   let {name, avatar, album_id} = req.body
-  console.log('the body', req.body)
   forThemModel.createUser(name, avatar, album_id)
   .then(user => {
     res.json(user)

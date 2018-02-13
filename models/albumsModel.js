@@ -20,4 +20,15 @@ function createSingleAlbum (title, image, dedicated_to, user_id) {
   })
 }
 
-module.exports = {allAlbums, singleAlbum, createSingleAlbum}
+function updateSingleAlbum (id, album) {
+  return knex('albums')
+  .update(album)
+  .where('id', id)
+}
+
+function deleteSingleAlbum (id) {
+  return knex('albums')
+  .where('id', id)
+  .del()
+}
+module.exports = {allAlbums, singleAlbum, createSingleAlbum, updateSingleAlbum, deleteSingleAlbum}
