@@ -4,11 +4,13 @@ const port = process.env.PORT || 3000
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const forThemRouter = require('./routes/for-them.js')
+const albumsRoutes = require('./routes/albumsRoutes.js')
 
 app.disable('x-powered-by')
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use('/forThem', forThemRouter)
+app.use('/albums', albumsRoutes)
 
 app.use((err, req, res, next) => {
   const status = err.status || 500
