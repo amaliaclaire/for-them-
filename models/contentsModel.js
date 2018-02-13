@@ -4,5 +4,20 @@ function getAllContents () {
   return knex('contents')
 }
 
+function getSingleContent (id) {
+  return knex('contents')
+  .where('id', id)
+  .first()
+}
 
-module.exports = {getAllContents}
+function createSingleContent(title, content_type, image, category) {
+  return knex('contents')
+  .insert({
+    title,
+    content_type,
+    image,
+    category
+  })
+}
+
+module.exports = {getAllContents, getSingleContent, createSingleContent}
