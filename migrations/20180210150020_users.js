@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.text('name').notNullable();
     table.text('avatar').notNullable();
-    table.string('album_id').notNullable();
+    table.integar('album_id').notNullable();
     table.timestamps(true, true)
   })
 };

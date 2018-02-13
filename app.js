@@ -11,8 +11,8 @@ app.use(bodyParser.json())
 app.use('/forThem', forThemRouter)
 
 app.use((err, req, res, next) => {
-  console.log('this is error', err);
   const status = err.status || 500
+  console.log(err)
   res.status(status).json({error: err})
 })
 
