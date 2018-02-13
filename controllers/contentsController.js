@@ -36,4 +36,12 @@ function updateContent(req, res, next) {
     res.json(content)
   }).catch(err => next(err))
 }
-module.exports = {getAllContents, getContent, createContent, updateContent}
+
+function deleteContent(req, res, next) {
+  let id = req.params.id
+  contentsModel.deleteSingleContent(id)
+  .then(content => {
+    res.json(content)
+  }).catch(err => next(err))
+}
+module.exports = {getAllContents, getContent, createContent, updateContent, deleteContent}

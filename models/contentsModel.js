@@ -26,4 +26,9 @@ function updateSingleContent(id, content) {
   .where('id', id)
 }
 
-module.exports = {getAllContents, getSingleContent, createSingleContent, updateSingleContent}
+function deleteSingleContent(id) {
+  return knex('contents')
+  .where('id', id)
+  .del()
+}
+module.exports = {getAllContents, getSingleContent, createSingleContent, updateSingleContent, deleteSingleContent}
