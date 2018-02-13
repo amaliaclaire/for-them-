@@ -9,4 +9,9 @@ router.get('/:id', forThemController.getOneController)
 router.post('/', forThemController.createUserController)
 router.delete('/:id', forThemController.deleteUserController)
 
+// albums
+
+
+
+
 module.exports = router
