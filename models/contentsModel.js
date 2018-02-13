@@ -20,4 +20,10 @@ function createSingleContent(title, content_type, image, category) {
   })
 }
 
-module.exports = {getAllContents, getSingleContent, createSingleContent}
+function updateSingleContent(id, content) {
+  return knex('contents')
+  .update(content)
+  .where('id', id)
+}
+
+module.exports = {getAllContents, getSingleContent, createSingleContent, updateSingleContent}

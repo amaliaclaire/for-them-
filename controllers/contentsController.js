@@ -22,4 +22,18 @@ function createContent (req, res, next) {
     res.json(content)
   }).catch(err => next(err))
 }
-module.exports = {getAllContents, getContent, createContent}
+
+function updateContent(req, res, next) {
+  let id = req.params.id
+  let content = {
+    title: req.body.title,
+    content_type: req.body.content_type,
+    image: req.body.image,
+    category: req.body.category
+  }
+  contentsModel.updateSingleContent(id, content)
+  .then(content => {
+    res.json(content)
+  }).catch(err => next(err))
+}
+module.exports = {getAllContents, getContent, createContent, updateContent}

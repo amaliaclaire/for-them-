@@ -5,6 +5,7 @@ let contentsController = require('../controllers/contentsController.js')
 router.get('/', contentsController.getAllContents)
 router.get('/:id', contentsController.getContent)
 router.post('/', contentsController.createContent)
+router.put('/:id', contentsController.updateContent)
 
 
 module.exports = router
