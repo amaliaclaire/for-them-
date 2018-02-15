@@ -29,7 +29,6 @@ function renderAlbumRow(album1, album2) {
   }
 }
 
-
 function renderAlbum(album) {
   let albumDiv = document.createElement('div')
   let albumImage = document.createElement('img')
@@ -38,11 +37,15 @@ function renderAlbum(album) {
 
   // delete button
   let deleteButton = document.createElement('button') // new
-  deleteButton.onclick = function (e) {console.log('delete', e);}
+  deleteButton.onclick = function (e) {
+    deleteAlbum(album)
+  }
 
   // update button
   let updateButton = document.createElement('button') //new
-  updateButton.onclick = function (e){console.log('update', e);}
+  updateButton.onclick = function (e){
+    updateAlbum(album)
+  }
   deleteButton.innerHTML = 'Delete' //new
   updateButton.innerHTML = 'Update' //new
   console.log('button', deleteButton);
@@ -65,4 +68,14 @@ function renderAlbum(album) {
   // make a bootstrap cols
   albumDiv.classList.add('cols-md-6')
   return albumDiv
+}
+
+// delete axios
+
+function deleteAlbum (album) {
+  let id = album.id
+  console.log('album has been deleted', album);
+  axios.delete(`http://localhost:3000/albums/${id}`)
+  .then(album => {
+  }).catch(err => console.log(err));
 }
