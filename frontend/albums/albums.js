@@ -4,16 +4,16 @@ axios.get('http://localhost:3000/albums')
   let albumsData = albums.data
 
   for (let i = 0; i < albumsData.length; i+=2) {
-    createAlbumRow(albumsData[i], albumsData[i+1])
+    renderAlbumRow(albumsData[i], albumsData[i+1])
   }
 }).catch(err => {
 
  console.log(err)
 })
 
-function createAlbumRow(album1, album2) {
+function renderAlbumRow(album1, album2) {
   if (album2) {
-  let albumCols = [createAlbum(album1), createAlbum(album2)]
+  let albumCols = [renderAlbum(album1), renderAlbum(album2)]
   let albumRow = document.createElement('div')
   albumRow.classList.add('row')
   albumRow.appendChild(albumCols[0])
@@ -21,7 +21,7 @@ function createAlbumRow(album1, album2) {
   document.querySelector('#listOfAlbums').appendChild(albumRow)
   }
   else {
-    let albumCol = createAlbum(album1)
+    let albumCol = renderAlbum(album1)
     let albumRow = document.createElement('div')
     albumRow.classList.add('row')
     albumRow.appendChild(albumCol)
@@ -30,23 +30,38 @@ function createAlbumRow(album1, album2) {
 }
 
 
-function createAlbum(album) {
+function renderAlbum(album) {
   let albumDiv = document.createElement('div')
   let albumImage = document.createElement('img')
   let cardBody = document.createElement('div')
   let cardDedicatedTo = document.createElement('div')
-  // let createAlbumButton = document.createElement("BUTTON")
+
+  // delete button
+  let deleteButton = document.createElement('button') // new
+  deleteButton.onclick = function (e) {console.log('delete', e);}
+
+  // update button
+  let updateButton = document.createElement('button') //new
+  updateButton.onclick = function (e){console.log('update', e);}
+  deleteButton.innerHTML = 'Delete' //new
+  updateButton.innerHTML = 'Update' //new
+  console.log('button', deleteButton);
+  // let renderAlbumButton = document.createElement("BUTTON")
 
   albumDiv.classList.add('card')
   albumImage.classList.add('card-img-top')
   cardBody.classList.add('card-body')
   cardDedicatedTo.classList.add('card-title')
+  deleteButton.classList.add('delete-button') // new
+  updateButton.classList.add('update-button') // new
   albumImage.src=`${album.image}`
   cardDedicatedTo.textContent = album.title
-  // document.body.appendChild(createAlbumButton)
+
+  // document.body.appendChild(renderAlbumButton)
   albumDiv.appendChild(cardDedicatedTo)
   albumDiv.appendChild(albumImage)
-
+  albumDiv.appendChild(deleteButton) // new
+  albumDiv.appendChild(updateButton)
   // make a bootstrap cols
   albumDiv.classList.add('cols-md-6')
   return albumDiv
