@@ -1,4 +1,5 @@
 function updateAlbum (event) {
+  console.log(event)
   event.preventDefault()
   let title = document.querySelector('#title').value
   let image = document.querySelector('#image').value
@@ -14,10 +15,11 @@ function updateAlbum (event) {
   }
   axios.put('http://localhost:3000/albums', object)
   .then(res => {
-    
     console.log(res);
   }).catch(err => console.log(err))
 }
 
 let form = document.querySelector('#updateAlbum-form')
-form.addEventListener('submit', createAlbum)
+if (form) {
+  form.addEventListener('submit', updateAlbum)
+}

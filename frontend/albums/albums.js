@@ -44,7 +44,9 @@ function renderAlbum(album) {
   // update button
   let updateButton = document.createElement('button') //new
   updateButton.onclick = function (e){
-    updateAlbum(album)
+    //console.log('here')
+    //updateAlbum(album)
+    window.location.replace('/albums/updateAlbums.html')
   }
   deleteButton.innerHTML = 'Delete' //new
   updateButton.innerHTML = 'Update' //new

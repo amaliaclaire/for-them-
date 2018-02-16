@@ -18,6 +18,7 @@ function getOneAlbum(req, res, next) {
 }
 
 function createAlbum (req, res, next) {
+  debugger
   let {title, image, dedicated_to, user_id} = req.body
   albumsModel.createSingleAlbum(title, image, dedicated_to, user_id)
   .then(album => {
